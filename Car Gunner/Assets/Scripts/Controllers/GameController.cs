@@ -26,17 +26,15 @@ public class GameController : MonoBehaviour
         {
             StartGameAsync().Forget();
         }
-
-        if (_gameStarted)
-        {
-            _cameraService.FollowCar();
-        }
     }
 
     private async UniTaskVoid StartGameAsync()
     {
         _gameStarted = true;
+
+        _cameraService.LerpToFollow();
         await UniTask.Delay(300);
         _carMover.StartMoving();
     }
+
 }

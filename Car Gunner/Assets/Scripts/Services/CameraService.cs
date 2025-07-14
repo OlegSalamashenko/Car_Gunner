@@ -1,20 +1,21 @@
 using UnityEngine;
+using Cinemachine;
 
 public class CameraService : MonoBehaviour
 {
-    [SerializeField] private Camera mainCamera;
+    [SerializeField] private CinemachineVirtualCamera vCam;
+    [SerializeField] private Transform car;
     [SerializeField] private Transform cameraStartPos;
     [SerializeField] private Transform cameraFollowPos;
 
     public void ResetCamera()
     {
-        mainCamera.transform.position = cameraStartPos.position;
-        mainCamera.transform.rotation = cameraStartPos.rotation;
+        vCam.LookAt = car;
+        vCam.Follow = cameraStartPos;
     }
 
-    public void FollowCar()
+    public void LerpToFollow()
     {
-        mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, cameraFollowPos.position, Time.deltaTime * 2f);
-        mainCamera.transform.rotation = Quaternion.Lerp(mainCamera.transform.rotation, cameraFollowPos.rotation, Time.deltaTime * 2f);
+        vCam.Follow = cameraFollowPos;
     }
 }
