@@ -14,7 +14,7 @@ public class CarMover : MonoBehaviour
     {
         if (isMoving)
         {
-            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+            transform.Translate(Vector3.forward * (speed * Time.deltaTime));
         }
     }
 }
