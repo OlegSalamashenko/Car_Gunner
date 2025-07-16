@@ -739,12 +739,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3b0c2e17550f4144b0a4f1eb75423a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 393828407593017408, guid: 6e96fa562347ac7499022f727b7e9281, type: 3}
+  enemyAddress: Enemy
   carTarget: {fileID: 862002521}
   spawnDistanceAhead: 60
   spawnRadiusSide: 10
   spawnInterval: 1.5
   levelLength: 400
+  minEnemiesPerWave: 3
+  maxEnemiesPerWave: 4
 --- !u!4 &632970003
 Transform:
   m_ObjectHideFlags: 0
@@ -1069,7 +1071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5485fc76185497c42a2152d15833fcff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 1000000
 --- !u!65 &862002523
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2379,7 +2381,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turretBase: {fileID: 858958551}
   muzzlePoint: {fileID: 1146574773}
-  bulletPrefab: {fileID: 113996902971814434, guid: 95a25f4e8440e774b8b335a536b7157e, type: 3}
+  bulletAddress: Bullet
   mainCamera: {fileID: 963194227}
   aimLayerMask:
     serializedVersion: 2

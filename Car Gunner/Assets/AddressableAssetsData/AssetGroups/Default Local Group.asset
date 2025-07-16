@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 42c4d93a97ab0364caec71a2b481a3fb
+  m_SerializeEntries:
+  - m_GUID: 6e96fa562347ac7499022f727b7e9281
+    m_Address: Assets/Prefabs/Enemy.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Enemy
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 95a25f4e8440e774b8b335a536b7157e
+    m_Address: Assets/Prefabs/Bullet.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bullet
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 926974f9b4d68784bb42d28595996a5e, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 6a4b1f550575b17428a58558daef5d60, type: 2}
+    - {fileID: 11400000, guid: 91ca996207927ee49b50b7010028582b, type: 2}

@@ -1,11 +1,14 @@
+using System;
 using UnityEngine;
 using UnityEngine.Pool;
 using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
+using UnityEngine.AddressableAssets;
+using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private Enemy enemyPrefab;
+    [SerializeField] private string enemyAddress = "Enemy";
     [SerializeField] private Transform carTarget;
     [SerializeField] private float spawnDistanceAhead = 60f;
     [SerializeField] private float spawnRadiusSide = 10f;
@@ -13,8 +16,9 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float levelLength = 400f;
 
     [SerializeField] private int minEnemiesPerWave = 3;
-    [SerializeField] private int maxEnemiesPerWave = 6;
+    [SerializeField] private int maxEnemiesPerWave = 4;
 
+    private GameObject enemyPrefab;
     private bool _spawningActive;
     private IObjectPool<Enemy> _enemyPool;
     private List<Enemy> _activeEnemies = new();
@@ -30,11 +34,36 @@ public class EnemySpawner : MonoBehaviour
         );
     }
 
+    private async void Start() => await LoadBulletPrefabAsync();
+    
+    public void StartSpawning()
+    {
+        if (_spawningActive) return;
+        _spawningActive = true;
+        SpawnWaves().Forget();
+    }
+
+    public void StopSpawning()
+    {
+        _spawningActive = false;
+
+        foreach (var enemy in _activeEnemies.ToArray())
+        {
+            _enemyPool.Release(enemy);
+        }
+        _activeEnemies.Clear();
+    }
+    private async UniTask LoadBulletPrefabAsync()
+    {
+        var handle = Addressables.LoadAssetAsync<GameObject>(enemyAddress);
+        enemyPrefab = await handle.ToUniTask();
+    }
+
     private Enemy CreateEnemy()
     {
         var enemy = Instantiate(enemyPrefab);
         enemy.gameObject.SetActive(false);
-        return enemy;
+        return enemy.GetComponent<Enemy>();
     }
 
     private void OnGetEnemy(Enemy enemy)
@@ -53,25 +82,6 @@ public class EnemySpawner : MonoBehaviour
     {
         Destroy(enemy.gameObject);
     }
-
-    public void StartSpawning()
-    {
-        if (_spawningActive) return;
-        _spawningActive = true;
-        SpawnWaves().Forget();
-    }
-
-    public void StopSpawning()
-    {
-        _spawningActive = false;
-
-        foreach (var enemy in _activeEnemies.ToArray())
-        {
-            _enemyPool.Release(enemy);
-        }
-        _activeEnemies.Clear();
-    }
-
     private async UniTaskVoid SpawnWaves()
     {
         while (_spawningActive)

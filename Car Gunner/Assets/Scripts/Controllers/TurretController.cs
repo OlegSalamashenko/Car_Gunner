@@ -1,16 +1,18 @@
 using UnityEngine;
 using UnityEngine.Pool;
 using Cysharp.Threading.Tasks;
+using UnityEngine.AddressableAssets;
 
 public class TurretController : MonoBehaviour
 {
     [SerializeField] private Transform turretBase;
     [SerializeField] private Transform muzzlePoint;
-    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private string bulletAddress = "Bullet";
     [SerializeField] private Camera mainCamera;
     [SerializeField] private LayerMask aimLayerMask;
     [SerializeField] private float fireRate = 0.25f;
 
+    private GameObject bulletPrefab;
     private float _lastFireTime;
     private IObjectPool<Bullet> _bulletPool;
 
@@ -21,16 +23,24 @@ public class TurretController : MonoBehaviour
             bullet => bullet.gameObject.SetActive(true),
             bullet => bullet.gameObject.SetActive(false),
             bullet => Destroy(bullet.gameObject),
-            true, // расширяемый пул — обязательно true
+            true,
             10, 100);
     }
-
+    
+    private async void Start() => await LoadBulletPrefabAsync();
+    
     private Bullet CreateBullet()
     {
         var obj = Instantiate(bulletPrefab, muzzlePoint.position, Quaternion.identity);
         return obj.GetComponent<Bullet>();
     }
-
+    
+    private async UniTask LoadBulletPrefabAsync()
+    {
+        var handle = Addressables.LoadAssetAsync<GameObject>(bulletAddress);
+        bulletPrefab = await handle.ToUniTask();
+    }
+    
     private void Update()
     {
         UpdateAim();
