@@ -1,6 +1,5 @@
 using UnityEngine;
 using Cysharp.Threading.Tasks;
-using Zenject;
 
 public class TurretController : MonoBehaviour
 {
@@ -15,29 +14,25 @@ public class TurretController : MonoBehaviour
 
     private void Update()
     {
-        Aim();
-        HandleFire();
+        UpdateAim();
+        TryFire();
     }
 
-    private void Aim()
+    private void UpdateAim()
     {
-        var ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        if (!TryGetAimTarget(out Vector3 target)) return;
 
-        if (Physics.Raycast(ray, out RaycastHit hit, 100f, aimLayerMask))
+        Vector3 dir = target - turretBase.position;
+        dir.y = 0f;
+
+        if (dir.sqrMagnitude > 0.01f)
         {
-            Vector3 target = hit.point;
-            target.y = turretBase.position.y;
-
-            Vector3 dir = target - turretBase.position;
-            if (dir.sqrMagnitude > 0.01f)
-            {
-                Quaternion rot = Quaternion.LookRotation(dir);
-                turretBase.rotation = Quaternion.Euler(-90f, rot.eulerAngles.y, 0);
-            }
+            Quaternion rotation = Quaternion.LookRotation(dir);
+            turretBase.rotation = Quaternion.Euler(-90f, rotation.eulerAngles.y, 0f);
         }
     }
 
-    private void HandleFire()
+    private void TryFire()
     {
         if (Input.GetMouseButton(0) && Time.time - _lastFireTime > fireRate)
         {
@@ -48,7 +43,27 @@ public class TurretController : MonoBehaviour
 
     private async UniTaskVoid FireAsync()
     {
-        Instantiate(bulletPrefab, muzzlePoint.position, muzzlePoint.rotation);
+        if (!TryGetAimTarget(out Vector3 targetPoint)) return;
+
+        Vector3 direction = (targetPoint - muzzlePoint.position).normalized;
+        Instantiate(bulletPrefab, muzzlePoint.position, Quaternion.LookRotation(direction));
+
         await UniTask.Yield();
+    }
+
+    private bool TryGetAimTarget(out Vector3 target)
+    {
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, 100f, aimLayerMask))
+        {
+            target = hit.collider.CompareTag("Enemy")
+                ? hit.collider.bounds.center
+                : hit.point;
+            return true;
+        }
+
+        target = default;
+        return false;
     }
 }
