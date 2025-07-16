@@ -4,7 +4,7 @@ using System;
 
 public class CarHealth : MonoBehaviour
 {
-    [SerializeField] private int maxHealth = 10;
+    [SerializeField] private int maxHealth = 15;
 
     private int _currentHealth;
 
