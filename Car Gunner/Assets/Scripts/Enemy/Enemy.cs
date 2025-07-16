@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour
                 if (distance > attackDistance)
                 {
                     Vector3 dir = (_carTarget.position - transform.position).normalized;
-                    transform.position += dir * speed * Time.deltaTime;
+                    transform.position += dir * (speed * Time.deltaTime);
                     transform.LookAt(_carTarget);
                 }
                 else

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Pool;
 using Cysharp.Threading.Tasks;
 
 public class TurretController : MonoBehaviour
@@ -11,6 +12,24 @@ public class TurretController : MonoBehaviour
     [SerializeField] private float fireRate = 0.25f;
 
     private float _lastFireTime;
+    private IObjectPool<Bullet> _bulletPool;
+
+    private void Awake()
+    {
+        _bulletPool = new ObjectPool<Bullet>(
+            CreateBullet,
+            bullet => bullet.gameObject.SetActive(true),
+            bullet => bullet.gameObject.SetActive(false),
+            bullet => Destroy(bullet.gameObject),
+            true, // расширяемый пул — обязательно true
+            10, 100);
+    }
+
+    private Bullet CreateBullet()
+    {
+        var obj = Instantiate(bulletPrefab, muzzlePoint.position, Quaternion.identity);
+        return obj.GetComponent<Bullet>();
+    }
 
     private void Update()
     {
@@ -46,7 +65,10 @@ public class TurretController : MonoBehaviour
         if (!TryGetAimTarget(out Vector3 targetPoint)) return;
 
         Vector3 direction = (targetPoint - muzzlePoint.position).normalized;
-        Instantiate(bulletPrefab, muzzlePoint.position, Quaternion.LookRotation(direction));
+
+        var bullet = _bulletPool.Get();
+        bullet.transform.SetPositionAndRotation(muzzlePoint.position, Quaternion.LookRotation(direction));
+        bullet.Init(direction, _bulletPool);
 
         await UniTask.Yield();
     }
@@ -57,9 +79,7 @@ public class TurretController : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, 100f, aimLayerMask))
         {
-            target = hit.collider.CompareTag("Enemy")
-                ? hit.collider.bounds.center
-                : hit.point;
+            target = hit.collider.CompareTag("Enemy") ? hit.collider.bounds.center : hit.point;
             return true;
         }
 
