@@ -741,10 +741,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 393828407593017408, guid: 6e96fa562347ac7499022f727b7e9281, type: 3}
   carTarget: {fileID: 862002521}
-  enemiesPerWave: 4
-  waveInterval: 3
   spawnDistanceAhead: 60
   spawnRadiusSide: 10
+  spawnInterval: 1.5
   levelLength: 400
 --- !u!4 &632970003
 Transform:

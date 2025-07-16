@@ -1,10 +1,13 @@
+using System;
+using System.Threading;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
+using UnityEngine.Pool;
 
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private float speed = 3f;
-    [SerializeField] private int health = 3;
+    [SerializeField] private int maxHealth = 3;
     [SerializeField] private float activationDistance = 20f;
     [SerializeField] private float attackDistance = 2f;
     [SerializeField] private int damage = 1;
@@ -14,61 +17,91 @@ public class Enemy : MonoBehaviour
     private bool _isActive;
     private bool _isDead;
 
-    public void Init(Transform car)
+    private IObjectPool<Enemy> _pool;
+    private int _currentHealth;
+
+    private CancellationTokenSource _cts;
+
+    public void Init(Transform car, IObjectPool<Enemy> pool)
     {
         _carTarget = car;
+        _pool = pool;
+
         _isActive = false;
         _isDead = false;
+        _currentHealth = maxHealth;
 
-        StartAI().Forget();
+        gameObject.SetActive(true);
+
+        _cts?.Cancel();
+        _cts = new CancellationTokenSource();
+
+        StartAI(_cts.Token).Forget();
     }
 
-    private async UniTaskVoid StartAI()
+    private async UniTaskVoid StartAI(CancellationToken token)
     {
-        var token = this.GetCancellationTokenOnDestroy();
-
-        while (!_isDead)
+        try
         {
-            if (_carTarget == null) return;
-
-            float distance = Vector3.Distance(transform.position, _carTarget.position);
-
-            if (!_isActive && distance < activationDistance)
-                _isActive = true;
-
-            if (_isActive)
+            while (!_isDead && !token.IsCancellationRequested)
             {
-                if (distance > attackDistance)
+                if (_carTarget == null) break;
+
+                float distance = Vector3.Distance(transform.position, _carTarget.position);
+
+                if (!_isActive && distance < activationDistance)
+                    _isActive = true;
+
+                if (_isActive)
                 {
-                    Vector3 dir = (_carTarget.position - transform.position).normalized;
-                    transform.position += dir * (speed * Time.deltaTime);
-                    transform.LookAt(_carTarget);
-                }
-                else
-                {
-                    if (_carTarget.TryGetComponent<CarHealth>(out var carHealth))
+                    if (distance > attackDistance)
                     {
-                        carHealth.TakeDamage(damage);
+                        Vector3 dir = (_carTarget.position - transform.position).normalized;
+                        transform.position += dir * (speed * Time.deltaTime);
+                        transform.LookAt(_carTarget);
                     }
+                    else
+                    {
+                        if (_carTarget.TryGetComponent<CarHealth>(out var carHealth))
+                        {
+                            carHealth.TakeDamage(damage);
+                        }
 
-                    await UniTask.Delay((int)(attackCooldown * 1000), cancellationToken: token);
+                        await UniTask.Delay((int)(attackCooldown * 1000), cancellationToken: token);
+                    }
                 }
-            }
 
-            await UniTask.Yield(PlayerLoopTiming.Update, token);
+                await UniTask.Yield(PlayerLoopTiming.Update, token);
+            }
+        }
+        catch (OperationCanceledException)
+        {
+            
         }
 
-        Destroy(gameObject);
+        if (_isDead && _pool != null)
+            Release();
     }
 
     public void TakeDamage(int amount)
     {
         if (_isDead) return;
 
-        health -= amount;
-        if (health <= 0)
+        _currentHealth -= amount;
+        if (_currentHealth <= 0)
         {
             _isDead = true;
         }
+    }
+
+    private void Release()
+    {
+        _cts?.Cancel();
+        _pool?.Release(this);
+    }
+
+    private void OnDisable()
+    {
+        _cts?.Cancel();
     }
 }
