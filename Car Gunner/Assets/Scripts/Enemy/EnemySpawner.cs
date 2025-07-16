@@ -1,51 +1,61 @@
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System;
+using Zenject;
 
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private Transform carTarget;
-    [SerializeField] private float spawnDistanceAhead = 60f;
+
+    [Header("Wave Settings")]
+    [SerializeField] private int enemiesPerWave = 4;
+    [SerializeField] private float waveInterval = 3f;
+
+    [Header("Spawn Position Settings")]
+    [SerializeField] private float spawnDistanceAhead = 50f;
     [SerializeField] private float spawnRadiusSide = 15f;
-    [SerializeField] private float spawnInterval = 1.5f;
     [SerializeField] private float levelLength = 400f;
 
-    private bool _spawningActive = true;
+    private bool _spawningActive;
 
-    private void Start()
+    public void StartSpawning()
     {
-        StartSpawning().Forget();
+        _spawningActive = true;
+        SpawnLoop().Forget();
     }
-
-    private async UniTaskVoid StartSpawning()
+    public void StopSpawning() => _spawningActive = false;
+    
+    private async UniTaskVoid SpawnLoop()
     {
         while (_spawningActive)
         {
-            SpawnEnemyAhead();
-            await UniTask.Delay(TimeSpan.FromSeconds(spawnInterval));
+            SpawnEnemyWave();
+            await UniTask.Delay(TimeSpan.FromSeconds(waveInterval));
         }
     }
 
-    private void SpawnEnemyAhead()
+    private void SpawnEnemyWave()
     {
         if (!carTarget) return;
 
         float carZ = carTarget.position.z;
-
         if (carZ >= levelLength)
         {
             _spawningActive = false;
             return;
         }
 
-        Vector3 spawnPos = new Vector3(
-            carTarget.position.x + UnityEngine.Random.Range(-spawnRadiusSide, spawnRadiusSide),
-            carTarget.position.y,
-            carTarget.position.z + UnityEngine.Random.Range(spawnDistanceAhead * 0.5f, spawnDistanceAhead)
-        );
+        for (int i = 0; i < enemiesPerWave; i++)
+        {
+            Vector3 spawnPos = new Vector3(
+                carTarget.position.x + UnityEngine.Random.Range(-spawnRadiusSide, spawnRadiusSide),
+                carTarget.position.y,
+                carTarget.position.z + UnityEngine.Random.Range(spawnDistanceAhead * 0.5f, spawnDistanceAhead)
+            );
 
-        var enemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
-        enemy.GetComponent<Enemy>().Init(carTarget);
+            var enemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+            enemy.GetComponent<Enemy>().Init(carTarget);
+        }
     }
 }

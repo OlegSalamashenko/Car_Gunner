@@ -1,13 +1,14 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class CarHealth : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 10;
-    [SerializeField] private TextMeshProUGUI statusText;
 
     private int _currentHealth;
+
+    public event Action OnCarDestroyed;
 
     private void Start()
     {
@@ -20,8 +21,7 @@ public class CarHealth : MonoBehaviour
         if (_currentHealth <= 0)
         {
             _currentHealth = 0;
-            statusText.text = "You Lose";
-            Time.timeScale = 0f;
+            OnCarDestroyed?.Invoke();
         }
     }
 }
