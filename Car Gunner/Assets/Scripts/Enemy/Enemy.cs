@@ -10,9 +10,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float speed = 3f;
     [SerializeField] private int maxHealth = 3;
     [SerializeField] private float activationDistance = 20f;
-    [SerializeField] private float attackDistance = 2f;
+    [SerializeField] private float attackDistance = 1f;
     [SerializeField] private int damage = 1;
     [SerializeField] private float attackCooldown = 1f;
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private float attackRadius = 1.2f; 
+    [SerializeField] private LayerMask carLayer;
 
     private Transform _carTarget;
     private IObjectPool<Enemy> _pool;
@@ -57,7 +60,10 @@ public class Enemy : MonoBehaviour
                 float distance = Vector3.Distance(transform.position, _carTarget.position);
 
                 if (!_isActive && distance < activationDistance)
+                {
                     _isActive = true;
+                    _enemyAnimator.SetRunning(true);
+                }
 
                 if (_isActive)
                 {
@@ -65,22 +71,38 @@ public class Enemy : MonoBehaviour
                     {
                         _enemyAnimator.SetRunning(true);
 
-                        Vector3 dir = (_carTarget.position - transform.position).normalized;
-                        transform.position += dir * (speed * Time.deltaTime);
-                        transform.LookAt(_carTarget);
+                        Collider carCollider = _carTarget.GetComponent<Collider>();
+                        Vector3 targetPos;
+                        Vector3 lookAtPoint;
+
+                        if (carCollider != null)
+                        {
+                            Vector3 closestPoint = carCollider.ClosestPoint(transform.position);
+                            Vector3 dirToCar = (closestPoint - transform.position).normalized;
+                            targetPos = closestPoint - dirToCar * attackDistance;
+                            lookAtPoint = closestPoint;
+                        }
+                        else
+                        {
+                            Vector3 dir = (_carTarget.position - transform.position).normalized;
+                            targetPos = _carTarget.position - dir * attackDistance;
+                            lookAtPoint = _carTarget.position;
+                        }
+
+                        transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
+                        transform.LookAt(lookAtPoint);
                     }
                     else
                     {
                         _enemyAnimator.SetRunning(false);
                         _enemyAnimator.PlayPunch();
 
-                        if (_carTarget.TryGetComponent<CarHealth>(out var carHealth))
-                        {
-                            carHealth.TakeDamage(damage);
-                        }
-
                         await UniTask.Delay((int)(attackCooldown * 1000), cancellationToken: token);
                     }
+                }
+                else
+                {
+                    _enemyAnimator.SetRunning(false);
                 }
 
                 await UniTask.Yield(PlayerLoopTiming.Update, token);
@@ -88,6 +110,7 @@ public class Enemy : MonoBehaviour
         }
         catch (OperationCanceledException)
         {
+            // отмена - ничего делать не нужно
         }
 
         if (_isDead && _pool != null)
@@ -110,6 +133,28 @@ public class Enemy : MonoBehaviour
         _enemyAnimator.SetRunning(false);
         _cts?.Cancel();
         _pool?.Release(this);
+    }
+
+    public void ApplyDamageEvent()
+    {
+        if (_isDead || attackPoint == null) return;
+
+        Collider[] hits = Physics.OverlapSphere(attackPoint.position, attackRadius, carLayer);
+        foreach (var hit in hits)
+        {
+            if (hit.TryGetComponent<CarHealth>(out var carHealth))
+            {
+                carHealth.TakeDamage(damage);
+                break;
+            }
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null) return;
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
     }
 
     private void OnDisable()

@@ -743,10 +743,10 @@ MonoBehaviour:
   carTarget: {fileID: 862002521}
   spawnDistanceAhead: 60
   spawnRadiusSide: 10
-  spawnInterval: 1.5
+  spawnInterval: 1e+16
   levelLength: 400
-  minEnemiesPerWave: 3
-  maxEnemiesPerWave: 4
+  minEnemiesPerWave: 1
+  maxEnemiesPerWave: 1
 --- !u!4 &632970003
 Transform:
   m_ObjectHideFlags: 0
@@ -1038,7 +1038,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e27d2a9e459cbd4e88430385c5ec7bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 3
   swayAmplitude: 0.5
   swayFrequency: 0.5
 --- !u!4 &862002521
