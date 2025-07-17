@@ -8,8 +8,8 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: 9fc0d4010bbf28b4594072e72b8655ab
+  m_OcclusionCullingData: {fileID: 36300000, guid: 780229126e2b344488f0e3f75fe3b43b, type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -139,6 +139,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sandrock_3 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4721594171894467232, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.3506002
@@ -207,6 +211,10 @@ PrefabInstance:
     - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_Name
       value: sandrock_3 (31)
+      objectReference: {fileID: 0}
+    - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4721594171894467232, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_LocalScale.x
@@ -325,6 +333,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plane.003
       objectReference: {fileID: 0}
+    - target: {fileID: 833579473744047816, guid: f0cf2cd6c588deb488e7bc22df6413db, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 8621902240433259951, guid: f0cf2cd6c588deb488e7bc22df6413db, type: 3}
       propertyPath: m_LocalPosition.x
       value: 24.3
@@ -381,6 +393,10 @@ PrefabInstance:
     - target: {fileID: 3475498833970528740, guid: e714322107bde7444b61df5923f5843e, type: 3}
       propertyPath: m_Name
       value: sandrock_1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3475498833970528740, guid: e714322107bde7444b61df5923f5843e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4674272489487997873, guid: e714322107bde7444b61df5923f5843e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -440,9 +456,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1233687650}
     m_Modifications:
+    - target: {fileID: 652067444093804006, guid: c066aebed38fcbd42a981bb8688c7e2e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 2321501660758592275, guid: c066aebed38fcbd42a981bb8688c7e2e, type: 3}
       propertyPath: m_Name
       value: table_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2321501660758592275, guid: c066aebed38fcbd42a981bb8688c7e2e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689500677240951473, guid: c066aebed38fcbd42a981bb8688c7e2e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5344729391977035083, guid: c066aebed38fcbd42a981bb8688c7e2e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7423244242357076412, guid: c066aebed38fcbd42a981bb8688c7e2e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -537,6 +569,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sandrock_3 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4721594171894467232, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.3506
@@ -602,6 +638,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1233687650}
     m_Modifications:
+    - target: {fileID: 781005142247197560, guid: db40ca9172fd004428fa43af13d1ff5d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1497289834577523639, guid: db40ca9172fd004428fa43af13d1ff5d, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.3536
@@ -654,9 +694,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1721280582321720761, guid: db40ca9172fd004428fa43af13d1ff5d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4012149042881255329, guid: db40ca9172fd004428fa43af13d1ff5d, type: 3}
       propertyPath: m_Name
       value: park_entrance
+      objectReference: {fileID: 0}
+    - target: {fileID: 4012149042881255329, guid: db40ca9172fd004428fa43af13d1ff5d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4336903475082226975, guid: db40ca9172fd004428fa43af13d1ff5d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8038163616475992764, guid: db40ca9172fd004428fa43af13d1ff5d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -705,6 +761,10 @@ PrefabInstance:
     - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_Name
       value: sandrock_3 (29)
+      objectReference: {fileID: 0}
+    - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4721594171894467232, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_LocalScale.x
@@ -813,6 +873,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: park_bakery_shop
       objectReference: {fileID: 0}
+    - target: {fileID: 5869028965148851765, guid: aa47784650f746749a13fc55d1b74187, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 8258609394460344816, guid: aa47784650f746749a13fc55d1b74187, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.2516
@@ -882,6 +946,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: tree_2
       objectReference: {fileID: 0}
+    - target: {fileID: 3337140701390758679, guid: 7c291998c8b4eeb41b47a8e379db7967, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 5540513662846719641, guid: 7c291998c8b4eeb41b47a8e379db7967, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.2121
@@ -950,6 +1018,10 @@ PrefabInstance:
     - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_Name
       value: sandrock_3 (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4721594171894467232, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_LocalScale.x
@@ -1024,6 +1096,10 @@ PrefabInstance:
     - target: {fileID: 5869028965148851765, guid: aa47784650f746749a13fc55d1b74187, type: 3}
       propertyPath: m_Name
       value: park_bakery_shop
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869028965148851765, guid: aa47784650f746749a13fc55d1b74187, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8258609394460344816, guid: aa47784650f746749a13fc55d1b74187, type: 3}
       propertyPath: m_LocalScale.x
@@ -1146,6 +1222,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sandrock_7
       objectReference: {fileID: 0}
+    - target: {fileID: 6142963679230853272, guid: b62790805d7396b44b1003d458c6e3f3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1162,6 +1242,10 @@ PrefabInstance:
     - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_Name
       value: sandrock_3 (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4721594171894467232, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_LocalScale.x
@@ -1289,6 +1373,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sandrock_7 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6142963679230853272, guid: b62790805d7396b44b1003d458c6e3f3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1310,6 +1398,10 @@ PrefabInstance:
     - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_Name
       value: sandrock_3 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4721594171894467232, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_LocalScale.x
@@ -1496,6 +1588,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plane
       objectReference: {fileID: 0}
+    - target: {fileID: 7927891029917275735, guid: d7feb67e38451be4d9512318242463f9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 9081254191651835603, guid: d7feb67e38451be4d9512318242463f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -33.11
@@ -1557,6 +1653,10 @@ PrefabInstance:
     - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_Name
       value: sandrock_3 (28)
+      objectReference: {fileID: 0}
+    - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4721594171894467232, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_LocalScale.x
@@ -1632,6 +1732,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: dumpcar_stack_1
       objectReference: {fileID: 0}
+    - target: {fileID: 988824775691397021, guid: afdc4eeb79e89d8449ee878892249a4a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 7810609333465712902, guid: afdc4eeb79e89d8449ee878892249a4a, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.2404
@@ -1700,6 +1804,10 @@ PrefabInstance:
     - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_Name
       value: sandrock_3 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4721594171894467232, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_LocalScale.x
@@ -1945,6 +2053,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cart_ice_cream
       objectReference: {fileID: 0}
+    - target: {fileID: 4325840194173889064, guid: 0e3684a9ab3b8de4ebbb80118ed576ee, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2002,6 +2114,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: crashed_car_1
       objectReference: {fileID: 0}
+    - target: {fileID: 8265087487343053043, guid: bd9155f524042e949b1de52d539d950e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2028,6 +2144,10 @@ PrefabInstance:
     - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_Name
       value: sandrock_3 (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4721594171894467232, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_LocalScale.x
@@ -2247,6 +2367,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sandrock_3 (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4721594171894467232, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.3505998
@@ -2320,6 +2444,10 @@ PrefabInstance:
     - target: {fileID: 988824775691397021, guid: afdc4eeb79e89d8449ee878892249a4a, type: 3}
       propertyPath: m_Name
       value: dumpcar_stack_1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 988824775691397021, guid: afdc4eeb79e89d8449ee878892249a4a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7810609333465712902, guid: afdc4eeb79e89d8449ee878892249a4a, type: 3}
       propertyPath: m_LocalScale.x
@@ -2457,6 +2585,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sandrock_7 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6142963679230853272, guid: b62790805d7396b44b1003d458c6e3f3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2569,6 +2701,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1233687650}
     m_Modifications:
+    - target: {fileID: 33748193290932060, guid: 5bdf7ff9aaa9f664baf67b45bdd89f2e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 5305635431299752751, guid: 5bdf7ff9aaa9f664baf67b45bdd89f2e, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.2828001
@@ -2624,6 +2760,10 @@ PrefabInstance:
     - target: {fileID: 6005735750143092288, guid: 5bdf7ff9aaa9f664baf67b45bdd89f2e, type: 3}
       propertyPath: m_Name
       value: roller_coaster
+      objectReference: {fileID: 0}
+    - target: {fileID: 6005735750143092288, guid: 5bdf7ff9aaa9f664baf67b45bdd89f2e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2698,6 +2838,10 @@ PrefabInstance:
     - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_Name
       value: sandrock_3 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4721594171894467232, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_LocalScale.x
@@ -2837,9 +2981,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1233687650}
     m_Modifications:
+    - target: {fileID: 1112542870126158451, guid: 861c7ac32f28d0d48afd1fa6702a3885, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3797236670467649764, guid: 861c7ac32f28d0d48afd1fa6702a3885, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6173388018492345860, guid: 861c7ac32f28d0d48afd1fa6702a3885, type: 3}
       propertyPath: m_Name
       value: ferris_wheel_rack
+      objectReference: {fileID: 0}
+    - target: {fileID: 6173388018492345860, guid: 861c7ac32f28d0d48afd1fa6702a3885, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6549700523889214310, guid: 861c7ac32f28d0d48afd1fa6702a3885, type: 3}
       propertyPath: m_LocalScale.x
@@ -2909,6 +3065,10 @@ PrefabInstance:
     - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_Name
       value: sandrock_3 (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4721594171894467232, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_LocalScale.x
@@ -3041,6 +3201,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sandrock_7 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 6142963679230853272, guid: b62790805d7396b44b1003d458c6e3f3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3120,6 +3284,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sea_container_blue (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3314614272043227991, guid: 3951e707a7089714b96bfca3de06cd7e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3194,6 +3362,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sea_container_blue
       objectReference: {fileID: 0}
+    - target: {fileID: 3314614272043227991, guid: 3951e707a7089714b96bfca3de06cd7e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3210,6 +3382,10 @@ PrefabInstance:
     - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_Name
       value: sandrock_3 (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4721594171894467232, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3272,6 +3448,10 @@ PrefabInstance:
     - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_Name
       value: sandrock_3 (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4721594171894467232, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_LocalScale.x
@@ -3628,6 +3808,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sandrock_3 (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4721594171894467232, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.3506002
@@ -3789,6 +3973,7 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
+  - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3904,6 +4089,50 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &963194230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!1 &965047636
 GameObject:
   m_ObjectHideFlags: 0
@@ -3998,6 +4227,10 @@ PrefabInstance:
     - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_Name
       value: sandrock_3 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4721594171894467232, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4293,6 +4526,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sandrock_1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3475498833970528740, guid: e714322107bde7444b61df5923f5843e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4674272489487997873, guid: e714322107bde7444b61df5923f5843e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 35.86
@@ -4354,6 +4591,10 @@ PrefabInstance:
     - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_Name
       value: sandrock_3 (30)
+      objectReference: {fileID: 0}
+    - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4721594171894467232, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_LocalScale.x
@@ -4556,6 +4797,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: desert_stone_7
       objectReference: {fileID: 0}
+    - target: {fileID: 5219464161811155333, guid: 5d3d4034aaf82f748abf39572f077c32, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4572,6 +4817,10 @@ PrefabInstance:
     - target: {fileID: 988824775691397021, guid: afdc4eeb79e89d8449ee878892249a4a, type: 3}
       propertyPath: m_Name
       value: dumpcar_stack_1 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 988824775691397021, guid: afdc4eeb79e89d8449ee878892249a4a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7810609333465712902, guid: afdc4eeb79e89d8449ee878892249a4a, type: 3}
       propertyPath: m_LocalScale.x
@@ -4649,7 +4898,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1233687650
 Transform:
@@ -4753,6 +5002,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: dumpcar_stack_1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 988824775691397021, guid: afdc4eeb79e89d8449ee878892249a4a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 7810609333465712902, guid: afdc4eeb79e89d8449ee878892249a4a, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.2404
@@ -4826,6 +5079,10 @@ PrefabInstance:
     - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_Name
       value: sandrock_3 (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4721594171894467232, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4937,6 +5194,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sandrock_3
       objectReference: {fileID: 0}
+    - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4721594171894467232, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.3506
@@ -5010,6 +5271,10 @@ PrefabInstance:
     - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_Name
       value: sandrock_3 (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4721594171894467232, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_LocalScale.x
@@ -5089,6 +5354,10 @@ PrefabInstance:
     - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_Name
       value: sandrock_3 (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4721594171894467232, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_LocalScale.x
@@ -5170,9 +5439,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1233687650}
     m_Modifications:
+    - target: {fileID: 1444124919661885917, guid: 5bae7ecd3d2f5e14ab2b9ac48fd2680c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 2070138128185329892, guid: 5bae7ecd3d2f5e14ab2b9ac48fd2680c, type: 3}
       propertyPath: m_Name
       value: swing
+      objectReference: {fileID: 0}
+    - target: {fileID: 2070138128185329892, guid: 5bae7ecd3d2f5e14ab2b9ac48fd2680c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4952131005159207257, guid: 5bae7ecd3d2f5e14ab2b9ac48fd2680c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5230,6 +5507,10 @@ PrefabInstance:
     - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_Name
       value: sandrock_3 (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4721594171894467232, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_LocalScale.x
@@ -5458,6 +5739,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cactus_1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6261305121702738849, guid: d6b6b3ebd7789904ca1ea584905ba72b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 8228990985962289247, guid: d6b6b3ebd7789904ca1ea584905ba72b, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.3541963
@@ -5531,6 +5816,10 @@ PrefabInstance:
     - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_Name
       value: sandrock_3 (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4721594171894467232, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_LocalScale.x
@@ -5606,6 +5895,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sandrock_3 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4721594171894467232, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.3506
@@ -5675,6 +5968,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sandrock_1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3475498833970528740, guid: e714322107bde7444b61df5923f5843e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4674272489487997873, guid: e714322107bde7444b61df5923f5843e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 45.86
@@ -5737,6 +6034,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: desert_stone_1
       objectReference: {fileID: 0}
+    - target: {fileID: 1261779966670387322, guid: 80d07edc05e0cc949b832a95260e8386, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 7766065379640763039, guid: 80d07edc05e0cc949b832a95260e8386, type: 3}
       propertyPath: m_LocalPosition.x
       value: 35.93664
@@ -5793,6 +6094,10 @@ PrefabInstance:
     - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_Name
       value: sandrock_3 (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4721594171894467232, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_LocalScale.x
@@ -5867,6 +6172,10 @@ PrefabInstance:
     - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_Name
       value: sandrock_3 (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4721594171894467232, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_LocalScale.x
@@ -5980,6 +6289,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sandrock_3 (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4721594171894467232, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.3506
@@ -6059,6 +6372,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: fuel_tank
       objectReference: {fileID: 0}
+    - target: {fileID: 1384944487687950473, guid: a9dd65c2f0137a94f86a13a638d8b3e5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 2732475135627159265, guid: a9dd65c2f0137a94f86a13a638d8b3e5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.549997
@@ -6115,6 +6432,10 @@ PrefabInstance:
     - target: {fileID: 3475498833970528740, guid: e714322107bde7444b61df5923f5843e, type: 3}
       propertyPath: m_Name
       value: sandrock_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3475498833970528740, guid: e714322107bde7444b61df5923f5843e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4674272489487997873, guid: e714322107bde7444b61df5923f5843e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6298,6 +6619,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cactus_3
       objectReference: {fileID: 0}
+    - target: {fileID: 7023410612950743582, guid: b5c957776312c2b47be769f9dbe58af7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6314,6 +6639,10 @@ PrefabInstance:
     - target: {fileID: 3290298775693001867, guid: ef6ebeef2731349449f54e5c0971f5ba, type: 3}
       propertyPath: m_Name
       value: RV_trailer_2_blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 3290298775693001867, guid: ef6ebeef2731349449f54e5c0971f5ba, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8360100510643982546, guid: ef6ebeef2731349449f54e5c0971f5ba, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6458,9 +6787,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 236886472116602126, guid: d3d306df0aadfe6489e793be7d1533ad, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3376424769080905940, guid: d3d306df0aadfe6489e793be7d1533ad, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4275268999195929534, guid: d3d306df0aadfe6489e793be7d1533ad, type: 3}
       propertyPath: m_Name
       value: table_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4275268999195929534, guid: d3d306df0aadfe6489e793be7d1533ad, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160519696095348973, guid: d3d306df0aadfe6489e793be7d1533ad, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8324030003036169058, guid: d3d306df0aadfe6489e793be7d1533ad, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6478,6 +6827,10 @@ PrefabInstance:
     - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_Name
       value: sandrock_3 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4721594171894467232, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_LocalScale.x
@@ -6652,6 +7005,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sandrock_3 (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4721594171894467232, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.3506
@@ -6778,6 +7135,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sandrock_7 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6142963679230853272, guid: b62790805d7396b44b1003d458c6e3f3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6799,6 +7160,10 @@ PrefabInstance:
     - target: {fileID: 502042585987631576, guid: fa74a74af1f0644449d221d6aa4f847b, type: 3}
       propertyPath: m_Name
       value: sandrock_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 502042585987631576, guid: fa74a74af1f0644449d221d6aa4f847b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 1201643105240225590, guid: fa74a74af1f0644449d221d6aa4f847b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6896,6 +7261,10 @@ PrefabInstance:
     - target: {fileID: 2826366132381240084, guid: aeaeeb9e55588e947ac7ccc4875d220b, type: 3}
       propertyPath: m_Name
       value: Plane.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 2826366132381240084, guid: aeaeeb9e55588e947ac7ccc4875d220b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7013,6 +7382,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plane.018
       objectReference: {fileID: 0}
+    - target: {fileID: 2348188930166759803, guid: caaf34587870857409dece9d0354945b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 8968215274166347681, guid: caaf34587870857409dece9d0354945b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 23.63
@@ -7069,6 +7442,10 @@ PrefabInstance:
     - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_Name
       value: sandrock_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4721594171894467232, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7131,6 +7508,10 @@ PrefabInstance:
     - target: {fileID: 2831096432639412354, guid: a8d434e196a76bc44b2e70172bbc686e, type: 3}
       propertyPath: m_Name
       value: RV_trailer_4_green
+      objectReference: {fileID: 0}
+    - target: {fileID: 2831096432639412354, guid: a8d434e196a76bc44b2e70172bbc686e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8795722011976311086, guid: a8d434e196a76bc44b2e70172bbc686e, type: 3}
       propertyPath: m_LocalScale.x
@@ -7344,6 +7725,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: carousel
       objectReference: {fileID: 0}
+    - target: {fileID: 776327979436258252, guid: 41b96a2929df9924193ff4e114fc197d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1273516483981843110, guid: 41b96a2929df9924193ff4e114fc197d, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.4243
@@ -7395,6 +7780,18 @@ PrefabInstance:
     - target: {fileID: 1273516483981843110, guid: 41b96a2929df9924193ff4e114fc197d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7399073492804361436, guid: 41b96a2929df9924193ff4e114fc197d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088626120753782463, guid: 41b96a2929df9924193ff4e114fc197d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 9171832453289322969, guid: 41b96a2929df9924193ff4e114fc197d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7552,6 +7949,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ice_cream_stand
       objectReference: {fileID: 0}
+    - target: {fileID: 7776296400018175222, guid: 71586bc115b7aa14f831e46483dcba45, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7621,6 +8022,10 @@ PrefabInstance:
     - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_Name
       value: sandrock_3 (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4721594171894467232, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_LocalScale.x
@@ -7872,6 +8277,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: dumpcar_stack_1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 988824775691397021, guid: afdc4eeb79e89d8449ee878892249a4a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 7810609333465712902, guid: afdc4eeb79e89d8449ee878892249a4a, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.2404
@@ -7951,6 +8360,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cactus_1
       objectReference: {fileID: 0}
+    - target: {fileID: 6261305121702738849, guid: d6b6b3ebd7789904ca1ea584905ba72b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 8228990985962289247, guid: d6b6b3ebd7789904ca1ea584905ba72b, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.2869
@@ -8019,6 +8432,10 @@ PrefabInstance:
     - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_Name
       value: sandrock_3 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 432463214322925986, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4721594171894467232, guid: 4e5471df90ac08946a9dd05030ac3bb4, type: 3}
       propertyPath: m_LocalScale.x
