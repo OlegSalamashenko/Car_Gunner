@@ -17,7 +17,7 @@ public class CarHealth : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        Debug.Log("HP " + _currentHealth);//////
+        Debug.Log("_currentHealth  "+_currentHealth);
         _currentHealth -= amount;
         if (_currentHealth <= 0)
         {
