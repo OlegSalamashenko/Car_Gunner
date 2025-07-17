@@ -4,6 +4,7 @@ using UnityEngine;
 using Cysharp.Threading.Tasks;
 using UnityEngine.Pool;
 
+[RequireComponent(typeof(EnemyAnimator))]
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private float speed = 3f;
@@ -14,10 +15,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float attackCooldown = 1f;
 
     private Transform _carTarget;
+    private IObjectPool<Enemy> _pool;
+    private EnemyAnimator _enemyAnimator;
+
     private bool _isActive;
     private bool _isDead;
-
-    private IObjectPool<Enemy> _pool;
     private int _currentHealth;
 
     private CancellationTokenSource _cts;
@@ -31,7 +33,12 @@ public class Enemy : MonoBehaviour
         _isDead = false;
         _currentHealth = maxHealth;
 
+        if (_enemyAnimator == null)
+            _enemyAnimator = GetComponent<EnemyAnimator>();
+
         gameObject.SetActive(true);
+
+        _enemyAnimator.SetRunning(false);
 
         _cts?.Cancel();
         _cts = new CancellationTokenSource();
@@ -56,12 +63,17 @@ public class Enemy : MonoBehaviour
                 {
                     if (distance > attackDistance)
                     {
+                        _enemyAnimator.SetRunning(true);
+
                         Vector3 dir = (_carTarget.position - transform.position).normalized;
                         transform.position += dir * (speed * Time.deltaTime);
                         transform.LookAt(_carTarget);
                     }
                     else
                     {
+                        _enemyAnimator.SetRunning(false);
+                        _enemyAnimator.PlayPunch();
+
                         if (_carTarget.TryGetComponent<CarHealth>(out var carHealth))
                         {
                             carHealth.TakeDamage(damage);
@@ -76,7 +88,6 @@ public class Enemy : MonoBehaviour
         }
         catch (OperationCanceledException)
         {
-            
         }
 
         if (_isDead && _pool != null)
@@ -96,6 +107,7 @@ public class Enemy : MonoBehaviour
 
     private void Release()
     {
+        _enemyAnimator.SetRunning(false);
         _cts?.Cancel();
         _pool?.Release(this);
     }
