@@ -3,9 +3,13 @@ using Zenject;
 using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    [SerializeField] private GameObject _gameOverUI;
+    [SerializeField] private TextMeshProUGUI _resultText;
+
     private CarMover _carMover;
     private CameraService _cameraService;
     private EnemySpawner _enemySpawner;
@@ -15,14 +19,11 @@ public class GameController : MonoBehaviour
     private bool _gameStarted;
     private bool _gameEnded;
 
-    [SerializeField] private GameObject gameOverUI;
-    [SerializeField] private TextMeshProUGUI resultText;
-
     [Inject]
     public void Construct(
-        CarMover carMover, 
-        CameraService cameraService, 
-        EnemySpawner enemySpawner, 
+        CarMover carMover,
+        CameraService cameraService,
+        EnemySpawner enemySpawner,
         FinishTrigger finishTrigger,
         CarHealth carHealth)
     {
@@ -36,19 +37,30 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         _cameraService.ResetCamera();
-        _finishTrigger.OnFinish += OnFinish;
-        _carHealth.OnCarDestroyed += OnCarDestroyed;
 
-        gameOverUI.SetActive(false);
+        _finishTrigger.OnFinish += HandleFinish;
+        _carHealth.OnCarDestroyed += HandleCarDestroyed;
+
+        _gameOverUI.SetActive(false);
     }
 
     private void OnDestroy()
     {
-        _finishTrigger.OnFinish -= OnFinish;
-        _carHealth.OnCarDestroyed -= OnCarDestroyed;
+        _finishTrigger.OnFinish -= HandleFinish;
+        _carHealth.OnCarDestroyed -= HandleCarDestroyed;
     }
 
-    private async void OnFinish()
+    private async void HandleFinish()
+    {
+        await EndGame("You Win");
+    }
+
+    private async void HandleCarDestroyed()
+    {
+        await EndGame("You Lose");
+    }
+
+    private async UniTask EndGame(string message)
     {
         if (_gameEnded) return;
         _gameEnded = true;
@@ -56,42 +68,29 @@ public class GameController : MonoBehaviour
         _enemySpawner.StopSpawning();
         _carMover.StopMoving();
 
-        ShowResult("You Win");
-
-        await WaitForRestartTap();
-    }
-
-    private async void OnCarDestroyed()
-    {
-        if (_gameEnded) return;
-        _gameEnded = true;
-
-        _enemySpawner.StopSpawning();
-        _carMover.StopMoving();
-
-        ShowResult("You Lose");
-
+        ShowResult(message);
         await WaitForRestartTap();
     }
 
     private void ShowResult(string message)
     {
-        resultText.text = message;
-        gameOverUI.SetActive(true);
+        _resultText.text = message;
+        _gameOverUI.SetActive(true);
     }
 
     private async UniTask WaitForRestartTap()
     {
         while (!Input.GetMouseButtonDown(0))
         {
-            await UniTask.Yield();
+            await UniTask.Yield(PlayerLoopTiming.Update, this.GetCancellationTokenOnDestroy());
         }
+
         RestartGame();
     }
 
     private void RestartGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void Update()
@@ -107,7 +106,7 @@ public class GameController : MonoBehaviour
         _gameStarted = true;
 
         _cameraService.LerpToFollow();
-        await UniTask.Delay(300);
+        await UniTask.Delay(300, cancellationToken: this.GetCancellationTokenOnDestroy());
 
         _carMover.StartMoving();
         _enemySpawner.StartSpawning();
