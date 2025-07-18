@@ -2443,6 +2443,7 @@ GameObject:
   m_Component:
   - component: {fileID: 573550999}
   - component: {fileID: 573551000}
+  - component: {fileID: 573551001}
   m_Layer: 0
   m_Name: HealthBarController
   m_TagString: Untagged
@@ -2481,8 +2482,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 018d63c3da93cce4e83abf781f7032af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthSlider: {fileID: 2005879134}
-  carTransform: {fileID: 862002521}
+  _healthSlider: {fileID: 2005879134}
+  _carTransform: {fileID: 862002521}
+--- !u!225 &573551001
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573550998}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!4 &593887159 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6488683510049497397, guid: 71586bc115b7aa14f831e46483dcba45, type: 3}
@@ -3872,8 +3885,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 570a20217b185344abe1b46ecb5722a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverUI: {fileID: 1869672865}
-  resultText: {fileID: 488338152}
+  _gameOverUI: {fileID: 1869672865}
+  _resultText: {fileID: 488338152}
 --- !u!4 &905185368
 Transform:
   m_ObjectHideFlags: 0
@@ -8246,8 +8259,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turretBase: {fileID: 858958551}
   muzzlePoint: {fileID: 1146574773}
-  bulletAddress: Bullet
   mainCamera: {fileID: 963194227}
+  bulletAddress:
+    m_AssetGUID: 95a25f4e8440e774b8b335a536b7157e
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   aimLayerMask:
     serializedVersion: 2
     m_Bits: 72

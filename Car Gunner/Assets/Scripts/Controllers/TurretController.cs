@@ -11,7 +11,7 @@ public class TurretController : MonoBehaviour
     [SerializeField] private Camera mainCamera;
 
     [Header("Settings")]
-    [SerializeField] private string bulletAddress = "Bullet";
+    [SerializeField] private AssetReferenceGameObject  bulletAddress;
     [SerializeField] private LayerMask aimLayerMask;
     [SerializeField] private float fireRate = 0.25f;
 
