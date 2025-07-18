@@ -2779,7 +2779,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3b0c2e17550f4144b0a4f1eb75423a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyAddress: Enemy
+  enemyAddress:
+    m_AssetGUID: 6e96fa562347ac7499022f727b7e9281
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   carTarget: {fileID: 862002521}
   spawnDistanceAhead: 60
   spawnRadiusSide: 10

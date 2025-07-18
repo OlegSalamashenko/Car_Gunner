@@ -1,67 +1,67 @@
+using UnityEngine;
+using UnityEngine.Pool;
+using UnityEngine.AddressableAssets;
+using Cysharp.Threading.Tasks;
 using System;
 using System.Threading;
-using System.Threading.Tasks;
-using UnityEngine;
-using Cysharp.Threading.Tasks;
-using UnityEngine.AddressableAssets;
-using UnityEngine.Pool;
 
 [RequireComponent(typeof(EnemyAnimator))]
 public class Enemy : MonoBehaviour
 {
+    [Header("Stats")]
     [SerializeField] private float speed = 5f;
     [SerializeField] private int maxHealth = 2;
     [SerializeField] private float activationDistance = 20f;
     [SerializeField] private float offsetDistance = 1.0f;
-    [SerializeField] private float attackDistance  = 1.2f;
-    [SerializeField] private float attackCooldown  = 1f;
+    [SerializeField] private float attackDistance = 1.2f;
+    [SerializeField] private float attackCooldown = 1f;
     [SerializeField] private int damage = 1;
 
+    [Header("Attack")]
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float attackRadius = 3f;
     [SerializeField] private LayerMask carLayer;
-    
+
     [Header("Death")]
-    [SerializeField] private string deathBallsAddress = "DeathBalls";           
-    [SerializeField] private int ballsCount = 4;           
-    [SerializeField] private float scatterStrength = 2f;   
+    [SerializeField] private AssetReferenceGameObject deathBallsAddress;
+    [SerializeField] private int ballsCount = 4;
+    [SerializeField] private float scatterStrength = 2f;
 
     private GameObject _deathBallsPrefab;
     private Transform _carTarget;
-    private EnemyAnimator _enemyAnimator;
+    private EnemyAnimator _animator;
     private IObjectPool<Enemy> _pool;
 
+    private CancellationTokenSource _cts;
+    private int _currentHealth;
     private bool _isActive;
     private bool _isDead;
-    private int  _currentHealth;
-    private CancellationTokenSource _cts;
 
+    private async void Start() => await LoadDeathEffectAsync();
 
-    private async void Start() => await LoadDeathBallsAsync();
-
-    private async UniTask LoadDeathBallsAsync()
+    private async UniTask LoadDeathEffectAsync()
     {
         var handle = Addressables.LoadAssetAsync<GameObject>(deathBallsAddress);
-        _deathBallsPrefab = await handle.ToUniTask();
+        _deathBallsPrefab = await handle.ToUniTask(cancellationToken: this.GetCancellationTokenOnDestroy());
     }
-
 
     public void Init(Transform car, IObjectPool<Enemy> pool)
     {
-        _carTarget    = car;
-        _pool         = pool;
-        _isDead       = false;
-        _isActive     = false;
-        _currentHealth= maxHealth;
+        _carTarget = car;
+        _pool = pool;
 
-        if (_enemyAnimator == null)
-            _enemyAnimator = GetComponent<EnemyAnimator>();
+        _isDead = false;
+        _isActive = false;
+        _currentHealth = maxHealth;
 
-        _enemyAnimator.SetRunning(false);
+        _animator ??= GetComponent<EnemyAnimator>();
+        _animator.SetRunning(false);
+
         gameObject.SetActive(true);
 
         _cts?.Cancel();
         _cts = new CancellationTokenSource();
+
         StartAI(_cts.Token).Forget();
     }
 
@@ -73,47 +73,37 @@ public class Enemy : MonoBehaviour
             {
                 if (_carTarget == null) break;
 
-                float distToCar = Vector3.Distance(transform.position, _carTarget.position);
-                
-                if (!_isActive && distToCar < activationDistance)
+                float distance = Vector3.Distance(transform.position, _carTarget.position);
+
+                if (!_isActive && distance < activationDistance)
                 {
                     _isActive = true;
-                    _enemyAnimator.SetRunning(true);
+                    _animator.SetRunning(true);
                 }
 
                 if (_isActive)
                 {
-                    Collider carCol = _carTarget.GetComponent<Collider>();
-                    Vector3 surfacePoint = carCol != null
-                        ? carCol.ClosestPoint(transform.position)
-                        : _carTarget.position;
-                    
-                    Vector3 dir = (surfacePoint - transform.position).normalized;
-                    
-                    Vector3 stopPoint = surfacePoint - dir * offsetDistance;
+                    Vector3 surfacePoint = GetTargetSurfacePoint();
+                    Vector3 direction = (surfacePoint - transform.position).normalized;
+                    Vector3 stopPoint = surfacePoint - direction * offsetDistance;
 
-                    float distToStopPoint = Vector3.Distance(transform.position, stopPoint);
+                    float distanceToStop = Vector3.Distance(transform.position, stopPoint);
 
-                    if (distToStopPoint > 0.05f)
+                    if (distanceToStop > 0.05f)
                     {
-                        _enemyAnimator.SetRunning(true);
-                        transform.position = Vector3.MoveTowards(transform.position, stopPoint, speed * Time.deltaTime);
-                        transform.LookAt(surfacePoint);
+                        MoveTowards(stopPoint, surfacePoint);
                     }
                     else
                     {
-                        float distForAttack = Vector3.Distance(transform.position, surfacePoint);
-                        if (distForAttack <= attackDistance)
+                        if (Vector3.Distance(transform.position, surfacePoint) <= attackDistance)
                         {
-                            _enemyAnimator.SetRunning(false);
-                            _enemyAnimator.PlayPunch();
+                            _animator.SetRunning(false);
+                            _animator.PlayPunch();
                             await UniTask.Delay((int)(attackCooldown * 1000), cancellationToken: token);
                         }
                         else
                         {
-                            _enemyAnimator.SetRunning(true);
-                            transform.position = Vector3.MoveTowards(transform.position, stopPoint, speed * Time.deltaTime);
-                            transform.LookAt(surfacePoint);
+                            MoveTowards(stopPoint, surfacePoint);
                         }
                     }
                 }
@@ -129,48 +119,64 @@ public class Enemy : MonoBehaviour
             _pool?.Release(this);
         }
     }
+
+    private void MoveTowards(Vector3 stopPoint, Vector3 lookAt)
+    {
+        _animator.SetRunning(true);
+        transform.position = Vector3.MoveTowards(transform.position, stopPoint, speed * Time.deltaTime);
+        transform.LookAt(lookAt);
+    }
+
+    private Vector3 GetTargetSurfacePoint()
+    {
+        Collider col = _carTarget.GetComponent<Collider>();
+        return col != null ? col.ClosestPoint(transform.position) : _carTarget.position;
+    }
+
+    public void TakeDamage(int amount)
+    {
+        if (_isDead) return;
+
+        _currentHealth -= amount;
+
+        if (_currentHealth <= 0)
+        {
+            _isDead = true;
+        }
+    }
+
+    public void ApplyDamageEvent()
+    {
+        if (_isDead || attackPoint == null) return;
+
+        Collider[] hits = Physics.OverlapSphere(attackPoint.position, attackRadius, carLayer);
+
+        foreach (var hit in hits)
+        {
+            if (hit.TryGetComponent<CarHealth>(out var car))
+            {
+                car.TakeDamage(damage);
+                break;
+            }
+        }
+    }
+
     private void SpawnDeathBalls()
     {
         if (_deathBallsPrefab == null) return;
 
         for (int i = 0; i < ballsCount; i++)
         {
-            Vector3 pos = transform.position + UnityEngine.Random.insideUnitSphere * 0.2f;
-            var ball = Instantiate(_deathBallsPrefab, pos, UnityEngine.Random.rotation);
+            Vector3 position = transform.position + UnityEngine.Random.insideUnitSphere * 0.2f;
+            GameObject ball = Instantiate(_deathBallsPrefab, position, UnityEngine.Random.rotation);
+
             if (ball.TryGetComponent<Rigidbody>(out var rb))
             {
-                Vector3 force = (Vector3.up * UnityEngine.Random.Range(0.5f, 1.5f)  
-                                 + UnityEngine.Random.onUnitSphere * 0.5f)
-                                * scatterStrength;
+                Vector3 force = (Vector3.up * UnityEngine.Random.Range(0.5f, 1.5f) +
+                                 UnityEngine.Random.onUnitSphere * 0.5f) * scatterStrength;
                 rb.AddForce(force, ForceMode.Impulse);
             }
         }
-    }
-
-    public void TakeDamage(int amount)
-    {
-        if (_isDead) return;
-        _currentHealth -= amount;
-        if (_currentHealth <= 0) _isDead = true;
-    }
-
-    private void Release()
-    {
-        _enemyAnimator.SetRunning(false);
-        _cts?.Cancel();
-        _pool?.Release(this);
-    }
-
-    public void ApplyDamageEvent()
-    {
-        if (_isDead || attackPoint == null) return;
-        Collider[] hits = Physics.OverlapSphere(attackPoint.position, attackRadius, carLayer);
-        foreach (var h in hits)
-            if (h.TryGetComponent<CarHealth>(out var ch))
-            {
-                ch.TakeDamage(damage);
-                break;
-            }
     }
 
     private void OnDisable() => _cts?.Cancel();
