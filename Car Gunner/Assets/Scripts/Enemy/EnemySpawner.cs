@@ -13,7 +13,7 @@ public class EnemySpawner : MonoBehaviour
     [Header("Target & Spawn Settings")]
     [SerializeField] private Transform carTarget;
     [SerializeField] private float spawnDistanceAhead = 60f;
-    [SerializeField] private float spawnRadiusSide = 10f;
+    [SerializeField] private float spawnRadiusSide = 15f;
     [SerializeField] private float spawnInterval = 3f;
     [SerializeField] private float levelLength = 400f;
 

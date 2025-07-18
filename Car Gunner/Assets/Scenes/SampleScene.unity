@@ -2786,7 +2786,7 @@ MonoBehaviour:
     m_EditorAssetChanged: 0
   carTarget: {fileID: 862002521}
   spawnDistanceAhead: 60
-  spawnRadiusSide: 10
+  spawnRadiusSide: 15
   spawnInterval: 1.5
   levelLength: 400
   minEnemiesPerWave: 2
