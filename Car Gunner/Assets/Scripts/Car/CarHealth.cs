@@ -1,26 +1,35 @@
 using UnityEngine;
- using UnityEngine.UI;
- using System;
- 
- public class CarHealth : MonoBehaviour
- {
-     [SerializeField] private int maxHealth = 15;
-     private int _currentHealth;
-     public event Action<int,int> OnHealthChanged;
-     public event Action OnCarDestroyed;
- 
-     private void Start()
-     {
-         _currentHealth = maxHealth;
-         OnHealthChanged?.Invoke(_currentHealth, maxHealth);
-     }
- 
-     public void TakeDamage(int amount)
-     {
-         _currentHealth = Mathf.Clamp(_currentHealth - amount, 0, maxHealth);
-         OnHealthChanged?.Invoke(_currentHealth, maxHealth);
- 
-         if (_currentHealth == 0)
-             OnCarDestroyed?.Invoke();
-     }
- }
+using System;
+
+public class CarHealth : MonoBehaviour
+{
+    [Header("Health Settings")]
+    [SerializeField] private int maxHealth = 15;
+    public int MaxHealth => maxHealth;
+    public int CurrentHealth { get; private set; }
+
+    public event Action<int, int> OnHealthChanged;
+    public event Action OnCarDestroyed;
+
+    private void Start()
+    {
+        ResetHealth();
+    }
+
+    public void TakeDamage(int amount)
+    {
+        if (amount <= 0) return;
+
+        CurrentHealth = Mathf.Clamp(CurrentHealth - amount, 0, MaxHealth);
+        OnHealthChanged?.Invoke(CurrentHealth, MaxHealth);
+
+        if (CurrentHealth == 0)
+            OnCarDestroyed?.Invoke();
+    }
+
+    public void ResetHealth()
+    {
+        CurrentHealth = MaxHealth;
+        OnHealthChanged?.Invoke(CurrentHealth, MaxHealth);
+    }
+}

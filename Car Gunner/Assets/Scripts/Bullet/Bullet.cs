@@ -1,54 +1,55 @@
 using UnityEngine;
 using UnityEngine.Pool;
 
+[RequireComponent(typeof(TrailRenderer))]
 public class Bullet : MonoBehaviour
 {
-    private float _lifetime = 3f;
-    private float _speed = 30f;
-    private Vector3 _direction;
-    private IObjectPool<Bullet> _pool;
-    private int _damage = 1;
+    [SerializeField] private float lifetime = 3f;
+    [SerializeField] private float speed = 30f;
+    [SerializeField] private int damage = 1;
 
-    private TrailRenderer _trail;
+    private Vector3 direction;
+    private IObjectPool<Bullet> pool;
+    private TrailRenderer trail;
 
     private void Awake()
     {
-        _trail = GetComponent<TrailRenderer>();
+        trail = GetComponent<TrailRenderer>();
     }
 
-    public void Init(Vector3 direction, IObjectPool<Bullet> pool)
+    public void Init(Vector3 newDirection, IObjectPool<Bullet> bulletPool)
     {
-        _direction = direction;
-        _pool = pool;
+        direction = newDirection;
+        pool = bulletPool;
 
         gameObject.SetActive(true);
-        CancelInvoke();
-        Invoke(nameof(Release), _lifetime);
+        trail.Clear();
 
-        _trail.Clear();
+        CancelInvoke(nameof(Release));
+        Invoke(nameof(Release), lifetime);
     }
 
     private void Update()
     {
-        transform.position += _direction * (_speed * Time.deltaTime);
+        transform.position += direction * (speed * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        if (!other.CompareTag("Enemy")) return;
+
+        if (other.TryGetComponent(out Enemy enemy))
         {
-            if (other.TryGetComponent<Enemy>(out var enemyHealth))
-            {
-                enemyHealth.TakeDamage(_damage);
-            }
-            Release();
+            enemy.TakeDamage(damage);
         }
+
+        Release();
     }
 
     private void Release()
     {
-        CancelInvoke();
-        _trail.Clear();
-        _pool?.Release(this);
+        CancelInvoke(nameof(Release));
+        trail.Clear();
+        pool?.Release(this);
     }
 }

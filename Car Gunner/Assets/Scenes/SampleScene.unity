@@ -3553,7 +3553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  swayAmplitude: 0.5
+  swayAmplitude: 1
   swayFrequency: 0.5
 --- !u!4 &862002521
 Transform:
