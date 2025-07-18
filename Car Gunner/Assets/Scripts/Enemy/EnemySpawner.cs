@@ -18,8 +18,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float levelLength = 400f;
 
     [Header("Enemies Per Wave")]
-    [SerializeField] private int minEnemiesPerWave = 3;
-    [SerializeField] private int maxEnemiesPerWave = 4;
+    [SerializeField] private int minEnemiesPerWave = 1;
+    [SerializeField] private int maxEnemiesPerWave = 2;
 
     private GameObject enemyPrefab;
     private bool _spawningActive;

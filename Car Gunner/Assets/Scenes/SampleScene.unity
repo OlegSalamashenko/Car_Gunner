@@ -2789,8 +2789,8 @@ MonoBehaviour:
   spawnRadiusSide: 15
   spawnInterval: 1.5
   levelLength: 400
-  minEnemiesPerWave: 2
-  maxEnemiesPerWave: 3
+  minEnemiesPerWave: 1
+  maxEnemiesPerWave: 2
 --- !u!4 &632970003
 Transform:
   m_ObjectHideFlags: 0
