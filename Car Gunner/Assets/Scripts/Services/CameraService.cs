@@ -3,19 +3,25 @@ using Cinemachine;
 
 public class CameraService : MonoBehaviour
 {
-    [SerializeField] private CinemachineVirtualCamera vCam;
+    [SerializeField] private CinemachineVirtualCamera introCam;
+    [SerializeField] private CinemachineVirtualCamera gameCam;
     [SerializeField] private Transform car;
-    [SerializeField] private Transform cameraStartPos;
-    [SerializeField] private Transform cameraFollowPos;
 
     public void ResetCamera()
     {
-        vCam.LookAt = car;
-        vCam.Follow = cameraStartPos;
+        introCam.Priority = 20;
+        gameCam.Priority  = 10;
+
+        introCam.LookAt = car;
+        introCam.Follow = null;
     }
 
     public void LerpToFollow()
     {
-        vCam.Follow = cameraFollowPos;
+        introCam.Priority = 10;
+        gameCam.Priority  = 20;
+
+        gameCam.Follow = car;
+        gameCam.LookAt = car;
     }
 }
