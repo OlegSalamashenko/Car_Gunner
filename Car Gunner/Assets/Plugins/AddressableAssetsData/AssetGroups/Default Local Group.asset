@@ -29,6 +29,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Bullet
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5e749c497bf703b49959210ab4467b70
+    m_Address: Assets/Prefabs/DeathBalls.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - DeathBalls
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 926974f9b4d68784bb42d28595996a5e, type: 2}
   m_SchemaSet:

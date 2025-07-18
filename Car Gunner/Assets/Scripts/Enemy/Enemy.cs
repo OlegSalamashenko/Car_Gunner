@@ -1,7 +1,9 @@
 using System;
 using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Pool;
 
 [RequireComponent(typeof(EnemyAnimator))]
@@ -18,7 +20,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float attackRadius = 3f;
     [SerializeField] private LayerMask carLayer;
+    
+    [Header("Death")]
+    [SerializeField] private string deathBallsAddress = "DeathBalls";           
+    [SerializeField] private int ballsCount = 4;           
+    [SerializeField] private float scatterStrength = 2f;   
 
+    private GameObject _deathBallsPrefab;
     private Transform _carTarget;
     private EnemyAnimator _enemyAnimator;
     private IObjectPool<Enemy> _pool;
@@ -27,6 +35,16 @@ public class Enemy : MonoBehaviour
     private bool _isDead;
     private int  _currentHealth;
     private CancellationTokenSource _cts;
+
+
+    private async void Start() => await LoadDeathBallsAsync();
+
+    private async UniTask LoadDeathBallsAsync()
+    {
+        var handle = Addressables.LoadAssetAsync<GameObject>(deathBallsAddress);
+        _deathBallsPrefab = await handle.ToUniTask();
+    }
+
 
     public void Init(Transform car, IObjectPool<Enemy> pool)
     {
@@ -105,7 +123,28 @@ public class Enemy : MonoBehaviour
         }
         catch (OperationCanceledException) { }
 
-        if (_isDead && _pool != null) Release();
+        if (_isDead)
+        {
+            SpawnDeathBalls();
+            _pool?.Release(this);
+        }
+    }
+    private void SpawnDeathBalls()
+    {
+        if (_deathBallsPrefab == null) return;
+
+        for (int i = 0; i < ballsCount; i++)
+        {
+            Vector3 pos = transform.position + UnityEngine.Random.insideUnitSphere * 0.2f;
+            var ball = Instantiate(_deathBallsPrefab, pos, UnityEngine.Random.rotation);
+            if (ball.TryGetComponent<Rigidbody>(out var rb))
+            {
+                Vector3 force = (Vector3.up * UnityEngine.Random.Range(0.5f, 1.5f)  
+                                 + UnityEngine.Random.onUnitSphere * 0.5f)
+                                * scatterStrength;
+                rb.AddForce(force, ForceMode.Impulse);
+            }
+        }
     }
 
     public void TakeDamage(int amount)

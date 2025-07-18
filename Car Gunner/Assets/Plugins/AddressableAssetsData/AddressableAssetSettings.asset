@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 42c4d93a97ab0364caec71a2b481a3fb
   m_currentHash:
     serializedVersion: 2
-    Hash: 59db6864e2e31223a9c2db77c744cecf
+    Hash: 6dc57bc125c0c69da88d1bb8a3841640
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -89,6 +89,7 @@ MonoBehaviour:
     - default
     - Enemy
     - Bullet
+    - DeathBalls
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 5b6cef358d0f3144bba5edc2f3126b6e, type: 2}
